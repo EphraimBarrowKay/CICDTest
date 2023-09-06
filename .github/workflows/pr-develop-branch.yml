@@ -74,9 +74,14 @@ jobs:
             - name: 'Authenticate to Develop Org'
             
               # the echo command is used to diplay a line of text that is passed in as an argument. Here we are obtaining the JWT secret
+              env:
+                SFDX_JWT_KEY: ${{ secrets.SFDX_JWT_KEY }}
+                SFDX_CLIENT_ID: ${{ secrets.SFDX_CLIENT_ID }}
               run: |
-                echo "${{ secrets.CERTIFICATE_KEY }}" > server.key
-                sfdx force:auth:jwt:grant --client-id=${{ secrets.CLIENT_ID }} --jwt-key-file=server.key --username=${{ secrets.AUTH_USERNAME }} --set-default-dev-hub
+                echo "${SFDX_JWT_KEY}" > server.key
+                npx sfdx force:auth:jwt:grant --client-id "${SFDX_CLIENT_ID}" --jwt-key-file server.key --username [YOUR_USER_NAME] -a sf-connection
+                npx sfdx force:org:display --json -u [YOUR_USER_NAME] > sfdx-auth.json
+                rm server.keyh
 
             # We use SFDX Git Delta to create a directory with only the metadata that has changed.
             # this allows us to deploy only those changes, as opposed to deploying the entire branch. 
