@@ -21,6 +21,7 @@ on:
 
 # Jobs to be executed when the above conditions are met
 jobs:
+  deployment:
     # This is the name of the job. You can give it whatever name you want
     validate-deployment-on-develop-org:
 
