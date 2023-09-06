@@ -72,13 +72,10 @@ jobs:
 
             # Authenticate to org using JWT
             - name: 'Authenticate to Develop Org'
-                script: echo "cert key secret is $(${{ secrets.CERTIFICATE_KEY }})"
             
               # the echo command is used to diplay a line of text that is passed in as an argument. Here we are obtaining the JWT secret
               run: |
                 echo "${{ secrets.CERTIFICATE_KEY }}" > server.key
-                script: echo "cert key vaariable is $(server.key)"
-                script: echo "cert key secret is $(${{ secrets.CERTIFICATE_KEY }})"
                 sfdx force:auth:jwt:grant --client-id=${{ secrets.CONSUMER_KEY }} --jwt-key-file=server.key --username=${{ secrets.AUTH_USERNAME }} --set-default-dev-hub
 
             # We use SFDX Git Delta to create a directory with only the metadata that has changed.
