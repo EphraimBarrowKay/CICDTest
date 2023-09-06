@@ -24,7 +24,6 @@ jobs:
     # This is the name of the job. You can give it whatever name you want
     validate-deployment-on-develop-org:
 
-        deployment:
         # This job runs inside a VM. Here we can specify which OS this VM should run on. 
         # In this case, we are going to run our commands on the latest version of ubuntu
         runs-on: ubuntu-latest
