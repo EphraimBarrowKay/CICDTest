@@ -52,7 +52,7 @@ jobs:
             - name: 'Authenticate to Develop Org'
               run: |
                 echo "${{ secrets.CERTIFICATE_KEY }}" > server.key
-                sfdx force:auth:jwt:grant --client-id=${{ secrets.CONSUMER_KEY }} --jwt-key-file=server.key --username=${{ secrets.AUTH_USERNAME }} --set-default-dev-hub
+                sfdx force:auth:jwt:grant --client-id=3MVG9pRzvMkjMb6kvRJkg6G06FY6OD51FgbldIOGNppDkomnIukFgdlywAmx5kZk1grpJCbfMqTwq1Lnejclt --jwt-key-file=server.key --username=${{ secrets.AUTH_USERNAME }} --set-default-dev-hub
 
             - name: 'Deploy the changes to develop org'
               run: sfdx force:source:deploy -p force-app --testlevel RunLocalTests -u ${{ secrets.AUTH_USERNAME }} --json
