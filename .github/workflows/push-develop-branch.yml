@@ -18,6 +18,7 @@ on:
 jobs:
     deploy-delta-to-develop-org:
         runs-on: ubuntu-latest
+        environment: development
         if: ${{ github.actor != 'dependabot[bot]' }}
         steps:
             # Install Salesforce CLI
