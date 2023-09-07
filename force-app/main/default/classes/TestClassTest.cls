@@ -1,12 +1,12 @@
 @isTest
 public with sharing class TestClassTest {
     
-    public static testClass(){
+    public static void testClass(){
         //assign
 
         //act
         Test.startTest();
-        TestClass.TestClass();
+        TestClass.sampleMethod();
         Test.stopTest();
     }
 }
