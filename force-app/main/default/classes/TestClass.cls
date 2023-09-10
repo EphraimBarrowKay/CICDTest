@@ -1,6 +1,6 @@
 public with sharing class TestClass {
 
     public static void sampleMethod(){
-
+        //check notifications
     }
 }  
