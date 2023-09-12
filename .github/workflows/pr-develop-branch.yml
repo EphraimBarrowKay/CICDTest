@@ -76,8 +76,8 @@ jobs:
             
               # the echo command is used to diplay a line of text that is passed in as an argument. Here we are obtaining the JWT secret
               run: |
-                echo "${{ secrets.CERTIFICATE_KEY }}" > server.key
-                sfdx force:auth:jwt:grant --client-id=${{ secrets.CONSUMER_KEY }} --jwt-key-file=server.key --username=${{ secrets.AUTH_USERNAME }} --set-default-dev-hub
+              echo "${{ secrets.SFDX_AUTH_URL }}" > sfdxAuthUrl.txt
+              sfdx auth:sfdxurl:store -f sfdxAuthUrl.txt -s
 
             # We use SFDX Git Delta to create a directory with only the metadata that has changed.
             # this allows us to deploy only those changes, as opposed to deploying the entire branch. 
