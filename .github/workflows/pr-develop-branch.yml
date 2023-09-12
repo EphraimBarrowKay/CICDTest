@@ -90,7 +90,7 @@ jobs:
               # We always run all local Apex tests
             - name: 'Validate deploy delta changes - run all tests'
               run: |
-                  sfdx force:source:deploy -p "changed-sources/force-app" --checkonly --testlevel RunLocalTests  --json --target-org --sfdx-url-file  sfdxAuthUrl.txt
+                  sfdx force:source:deploy -p "changed-sources/force-app" --checkonly --testlevel RunLocalTests  --json --sfdx-url-file  sfdxAuthUrl.txt
 
             - name: 'Validate destructive changes (if any)'
               run: sfdx force:mdapi:deploy -d "changed-sources/destructiveChanges" --checkonly --ignorewarnings -u ${{ secrets.AUTH_USERNAME }}
