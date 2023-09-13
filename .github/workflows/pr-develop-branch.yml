@@ -92,7 +92,7 @@ jobs:
               run: |
                 echo "${{ secrets.SFDX_AUTH_URL }}" > sfdxAuthUrl.txt
                 sf org login sfdx-url --sfdx-url-file sfdxAuthUrl.txt
-                  sfdx force:source:deploy -p "changed-sources/force-app" --checkonly --testlevel RunLocalTests  
+                  sfdx force:source:deploy -p "changed-sources/force-app" --checkonly --testlevel RunLocalTests  -u ${{ secrets.AUTH_USERNAME }}
 
             - name: 'Validate destructive changes (if any)'
               run: sfdx force:mdapi:deploy -d "changed-sources/destructiveChanges" --checkonly --ignorewarnings -u ${{ secrets.AUTH_USERNAME }}
