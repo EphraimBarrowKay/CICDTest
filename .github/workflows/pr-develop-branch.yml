@@ -94,4 +94,6 @@ jobs:
                 sf org deploy sfdx-url --sfdx-url-file sfdxAuthUrl.txt -p "changed-sources/force-app" 
 
             - name: 'Validate destructive changes (if any)'
-              run: sfdx force:mdapi:deploy -d "changed-sources/destructiveChanges" --checkonly --ignorewarnings -u ${{ secrets.AUTH_USERNAME }}
+              run: |
+                echo "${{ secrets.SFDX_AUTH_URL }}" > sfdxAuthUrl.txt
+                sf org deploy sfdx-url --sfdx-url-file sfdxAuthUrl.txt -p "changed-sources/force-app" 
